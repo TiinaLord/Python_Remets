@@ -11,9 +11,16 @@ class Triangle(Figure):
         self.side_b = side_b
         self.side_c = side_c
 
+    @property
     def get_area(self):
         semi_p = (self.side_a + self.side_b + self.side_c) / 2
         return round((semi_p * (semi_p - self.side_a) * (semi_p - self.side_b) * (semi_p - self.side_c)) ** 0.5, 2)
 
+    @property
     def get_perimeter(self):
         return self.side_a + self.side_b + self.side_c
+
+
+t = Triangle(4, 5, 6)
+t.get_area
+t.get_perimeter

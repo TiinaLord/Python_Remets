@@ -10,8 +10,15 @@ class Rectangle(Figure):
         self.side_b = side_b
         self.name = f"Rectangle {side_a} and {side_b}"
 
+    @property
     def get_area(self):
         return self.side_a * self.side_b
 
+    @property
     def get_perimeter(self):
         return 2 * (self.side_a + self.side_b)
+
+
+r = Rectangle(5, 4)
+r.get_area
+r.get_perimeter

@@ -9,8 +9,15 @@ class Square(Figure):
         self.name = f"Square {side_square}"
         self.side_square = side_square
 
+    @property
     def get_area(self):
         return self.side_square * self.side_square
 
+    @property
     def get_perimeter(self):
         return 2 * (self.side_square + self.side_square)
+
+
+s = Square(5)
+s.get_area
+s.get_perimeter
