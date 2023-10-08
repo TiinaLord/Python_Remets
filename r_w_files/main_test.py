@@ -1,6 +1,6 @@
 import json
 import csv
-from test_files import JS0N_Users, Result_json, CSV_Books
+from test_files import json_users, result_json, csv_books
 
 
 def get_users(file_path):
@@ -53,12 +53,12 @@ def write_json(new_user, file_path):
 
 
 def main():
-    users_file_path = JS0N_Users
-    books_file_path = CSV_Books
+    users_file_path = json_users
+    books_file_path = csv_books
     users = get_users(users_file_path)
     books = get_books(books_file_path)
     distribution = distribute_books(books, users)
-    result_json_file_path = Result_json
+    result_json_file_path = result_json
     write_json(distribution, result_json_file_path)
 
 
