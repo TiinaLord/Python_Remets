@@ -11,24 +11,40 @@ def get_users(file_path):
 
 def get_books(file_path):
     data = []
-    with open(file_path, "r") as CSV_reader:
-        rows = csv.DictReader(CSV_reader)
+    with open(file_path, "r") as csv_reader:
+        rows = csv.DictReader(csv_reader)
         for row in rows:
             data.append(row)
     return data
 
 
 def distribute_books(data, users):
+    users_with_books = []
+    books_per_user = len(data) // len(users)
+    remaining_books = len(data) % len(users)
+    book_index = 0
     for user in users:
-        for book in data:
-            while len(book) < len(data) // len(users):
-                new_user = {"name": user["name"], "gender": user["gender"], "address": user["address"],
-                            "age": user["age"]}
-                distribution = {"title": book["Title"], "author": book["Author"], "genre": book["Genre"],
-                        "pages": book["Pages"]}
-                new_user['books'] = [distribution]
-                print(new_user)
-                return new_user
+        new_user = {"name": user["name"], "gender": user["gender"], "address": user["address"],
+                    "age": user["age"], "books": []}
+
+        for i in range(books_per_user):
+            book = data[book_index]
+            book_index += 1
+            current_book = {"title": book["Title"], "author": book["Author"], "genre": book["Genre"],
+                            "pages": book["Pages"]}
+
+            new_user['books'].append(current_book)
+
+        if remaining_books > 0:
+            book = data[book_index]
+            book_index += 1
+            remaining_books -= 1
+            current_book = {"title": book["Title"], "author": book["Author"], "genre": book["Genre"],
+                            "pages": book["Pages"]}
+
+            new_user['books'].append(current_book)
+        users_with_books.append(new_user)
+    return users_with_books
 
 
 def write_json(new_user, file_path):
