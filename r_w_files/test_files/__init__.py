@@ -6,6 +6,6 @@ def get_path(file_name):
     return os.path.join(work_folder, file_name)
 
 
-CSV_Books = get_path("Books.csv")
-JS0N_Users = get_path("users.json")
-Result_json = get_path("result.json")
+csv_books = get_path("Books.csv")
+json_users = get_path("users.json")
+result_json = get_path("result.json")
