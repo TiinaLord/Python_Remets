@@ -25,7 +25,7 @@ def test_post_resource():
         }
     }
     result_post = requests.post(post_url, json=json_for_post)
-    assert 201 == result_post.status_code
+    assert result_post.status_code == 201
     print(result_post.json())
 
 
@@ -42,7 +42,7 @@ def test_put_resource(ids):
         }
     }
     result_put = requests.put(url_put, json=json_for_put)
-    assert 200 == result_put.status_code
+    assert result_put.status_code == 200
     print(result_put.json())
 
 
@@ -55,7 +55,7 @@ def test_patch_resource():
         }
     }
     result_put = requests.put(url_patch, json=json_for_put)
-    assert 200 == result_put.status_code
+    assert result_put.status_code == 200
     print(result_put.json())
 
 
@@ -63,5 +63,5 @@ def test_delete_resource():
     delete_resource = "posts/1"
     url_delete = base_url + delete_resource
     result_delete = requests.delete(url_delete)
-    assert 200 == result_delete.status_code
+    assert result_delete.status_code == 200
     print(result_delete.json())
